@@ -1,14 +1,19 @@
 class Solution {
     public int fib(int n) {
-        // first recurssive solution
-        if (n == 0){
-            return 0;
+        // topdown - memoization
+        Map<Integer, Integer> memo = new HashMap<>();
+        memo.put(0, 0);
+        memo.put(1, 1);
+        return f(n, memo);
+    }
+
+    private int f(int x, Map<Integer, Integer> memo){
+        if (memo.containsKey(x)){
+            return memo.get(x);
         }
 
-        if (n == 1){
-            return 1;
-        }
-
-        return fib(n-2) + fib(n-1);
+        int res = f(x - 1, memo) + f(x - 2, memo);
+        memo.put(x, res);
+        return res;
     }
 }
