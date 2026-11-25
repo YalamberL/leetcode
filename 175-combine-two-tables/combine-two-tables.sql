@@ -1,7 +1,5 @@
 # Write your MySQL query statement below
-SELECT p.firstName, p.lastName, a.city, a.state
-FROM Person p
-LEFT JOIN Address a
-ON a.personId = p.PersonId
-GROUP BY p.firstName, p.lastName, a.city, a.state
-ORDER BY p.firstName
+SELECT firstName, lastName, city, state
+FROM Person
+LEFT JOIN Address
+ON Address.personId = Person.PersonId
